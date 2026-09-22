@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Du solltest das nicht sehen 👀</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(90%, 600px);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 4rem);
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 35px;
+    }
+
+    button {
+      border: 0;
+      padding: 18px 35px;
+      border-radius: 12px;
+      background: white;
+      color: black;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform .15s, background .15s;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      background: #ddd;
+    }
+
+    #reveal {
+      display: none;
+    }
+
+    #reveal img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+
+    .shake {
+      animation: shake .4s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      50% { transform: translateX(10px); }
+      75% { transform: translateX(-10px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container" id="main">
+    <h1>⚠️ Warte kurz.</h1>
+
+    <p>
+      Du hast gerade etwas gefunden,<br>
+      das eigentlich niemand finden sollte.
+    </p>
+
+    <button onclick="reveal()">
+      Trotzdem öffnen 👀
+    </button>
+  </main>
+
+  <section class="container" id="reveal">
+    <h1>😂 DU WURDEST GEREINROLLT</h1>
+
+    <p>
+      Es gab hier absolut nichts Wichtiges.
+    </p>
+
+    <!-- Eigenes Meme-Bild hier einfügen -->
+    <img src="rickroll.jpg" alt="Meme">
+
+    <p>
+      Schönen Tag noch. 🫡
+    </p>
+  </section>
+
+  <script>
+    function reveal() {
+      document.body.classList.add("shake");
+
+      setTimeout(() => {
+        document.getElementById("main").style.display = "none";
+        document.getElementById("reveal").style.display = "block";
+        document.body.classList.remove("shake");
+      }, 400);
+    }
+  </script>
+
+</body>
+</html>
